@@ -1,0 +1,2 @@
+docker run -it nouchka/sqlite3
+-v ${pwd}:/etc 
