@@ -329,6 +329,9 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 
+# Token
+Token.txt
+
 # OpenCover UI analysis results
 OpenCover/
 
