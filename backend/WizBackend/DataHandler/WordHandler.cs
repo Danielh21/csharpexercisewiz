@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Data.SQLite;
+using System.Data;
 
 namespace WizBackend.DataHandler
 {
@@ -12,7 +13,7 @@ namespace WizBackend.DataHandler
         static private string connectionString = @"Data Source = C:\Users\Daniel Hollmann\Documents\Development\Source\wizfile\database\Dictionary.db; 
                                     Version=3; FailIfMissing=True; Foreign Keys = True;";
 
-        public static void LookUpWord(string parts)
+        public static List<String> LookUpWord(string parts)
         {
             List<String> MatchingWords = new List<String>();
             SQLiteConnection e = new SQLiteConnection(connectionString, true);
@@ -21,9 +22,13 @@ namespace WizBackend.DataHandler
                 using (SQLiteConnection conn = new SQLiteConnection(connectionString))
                 {
                     conn.Open();
-                    string sql = "SELECT * FROM Words w WHERE w.value like 'e%'";
+                    string sql = "SELECT * FROM Words w WHERE w.value like @part";
                     using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
                     {
+                        //cmd.Parameters.Add("@part", DbType.String);
+                        SQLiteParameter parameter = new SQLiteParameter("@part", DbType.String);
+                        //parameter.Value = ez;
+                        cmd.Parameters.AddWithValue("@part", parts + "%");
                         using (SQLiteDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
@@ -40,7 +45,7 @@ namespace WizBackend.DataHandler
                 throw exp;
             }
 
-            Console.WriteLine(MatchingWords.Count);
+            return MatchingWords;
 
         }
     }
