@@ -10,7 +10,7 @@ namespace WizBackend.DataHandler
     public class WordHandler
     {
 
-        static private string connectionString = @"Data Source = C:\Users\Daniel Hollmann\Documents\Development\Source\wizfile\database\Dictionary.db; 
+        static private string connectionString = @"Data Source = database\Dictionary.db; 
                                     Version=3; FailIfMissing=True; Foreign Keys = True;";
 
         public static List<String> LookUpWord(string parts)
