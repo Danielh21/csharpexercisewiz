@@ -6,3 +6,4 @@ Backend created with .NET Core and frontend HTML, CSS and JS.
 
 Check their repo for description.
 
+Implemented in October.
