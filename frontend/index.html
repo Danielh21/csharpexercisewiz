@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Word Prediction</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body class="bodyStyle">
+    <h1>Word Prediction App</h1>
+
+    <h3> Write a word 3 letters or longer, to get suggestions! </h3>
+
+    <textarea oninput="fetchWords(this.value)" rows=2 class="textA" id="input"></textarea>
+
+    <div class="ResultsDiv">
+
+        <h3 style="color: green;">Dictonary Results: </h3>
+        <div id="DictonaryArea" class="textResults"></div>
+        <h3 style="color: red;">WebService Results: </h3>
+        <div id="WebServiceArea" class="textResults"></div>
+    </div>
+
+</body>
+
+<script src="functions.js"></script>
+
+</html>
