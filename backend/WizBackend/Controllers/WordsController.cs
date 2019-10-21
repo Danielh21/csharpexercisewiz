@@ -8,6 +8,7 @@ using WizBackend.DataHandler;
 using System.Net.Http;
 using System.Net;
 using System.Net.Http.Headers;
+using Newtonsoft.Json;
 
 namespace WizBackend.Controllers
 {
@@ -25,10 +26,10 @@ namespace WizBackend.Controllers
         [HttpGet("db/{part}")]
         public JsonResult DatabaseResult(string part)
         {
-            List<String> MatchingWords = WordHandler.LookUpWord(part);
+            List<String> data = WordHandler.LookUpWord(part);
             return new JsonResult(new
             {
-                MatchingWords
+                data
             });
         }
 
@@ -44,7 +45,7 @@ namespace WizBackend.Controllers
             var responseString = response.Content.ReadAsStringAsync().Result;
             return new JsonResult(new
             {
-
+                Data = JsonConvert.DeserializeObject(responseString)
             });
         }
 
